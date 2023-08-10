@@ -1,0 +1,117 @@
+ Student student=new Student("Adel", 23);
+        Student student1=new Student("Farida", 78);
+        Student student2=new Student("Alina", 67);
+        Student student3=new Student("Elina", 6);
+        Student student4=new Student("Eliza", 8);
+        Student student5=new Student("Farida", 88);
+        Student student6=new Student("Erkin", 89);
+
+
+
+
+        Student [] students= {student, student1,student2, student3,student5};
+
+        StudentManager studentManager=new StudentManager("Beka", 2,students);
+        System.out.println(studentManager);
+        System.out.println("--------------------------------------");
+
+
+        System.out.println(studentManager.addNewStudents(student4, student6));
+        studentManager.getAllStudents();
+        System.out.println("---------------------------------------");
+
+        System.out.println(studentManager.updateStudents("Adel", 18));
+       studentManager.getAllStudents();
+        System.out.println("----------------------------------------");
+
+        System.out.println(studentManager.searchByName("Elina"));
+        System.out.println("-----------------------------------------");
+
+        System.out.println(studentManager.getMeAllStudentsByNameFarida("Farida"));
+        System.out.println("------------------------------------------");
+
+
+
+    }
+}
+
+public class StudentManager {
+     private String name;
+
+     private int ageOfExperience;
+
+     private Student [] students;
+
+     public StudentManager(String name, int ageOfExperience, Student[] students) {
+          this.name = name;
+          this.ageOfExperience = ageOfExperience;
+          this.students = students;
+     }
+
+
+
+     public String addNewStudents(Student student, Student student1){
+          for(Student b: students){
+               if(b.getName().equals(student.getName())){
+
+
+               }
+          }
+          Student[] arr=new Student[students.length+1];
+          for(int i=0; i<students.length; i++){
+               arr[i]=students[i];
+          }
+
+          arr[students.length]=student;
+          students= Arrays.copyOf(arr, arr.length);
+
+          return "Added";
+     }
+
+     public String updateStudents(String bookName, int newAge ){
+          for(Student ss:students){
+               if(ss.getName().equals(bookName)){
+                    ss.setAge(newAge);
+               }
+          }
+          return "Updated";
+     }
+
+     public String searchByName(String name){
+          for(Student stu:students){
+               if(stu.getName().equals(name)){
+                    System.out.println(stu);
+               }
+          }
+
+
+          return "Successfully founded by Elina";
+     }
+     public String getMeAllStudentsByNameFarida(String name){
+          for(Student arr:students){
+               if(arr.getName().equals(name)){
+                    System.out.println(arr);
+               }
+          }
+          return "Founded students by name Farida";
+     }
+
+
+     public void getAllStudents(){
+          for(int i=0; i<students.length; i++){
+               System.out.println(students[i]+" ");
+          }
+
+
+     }
+
+     @Override
+     public String toString() {
+          return "StudentManager{" +
+                  "name='" + name + '\'' +
+                  ", ageOfExperience=" + ageOfExperience +
+                  ", students=" + Arrays.toString(students) +
+                  '}';
+     }
+}
+
